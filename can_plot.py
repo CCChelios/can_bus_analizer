@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 # Открытие файла с дампом
 cap = pyshark.FileCapture('ignitin_start_engine.pcapng')
 
-
 ids = defaultdict(list)
 for packet in cap:
     if packet.can.id == "344":
