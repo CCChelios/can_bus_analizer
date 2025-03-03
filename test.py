@@ -8,7 +8,7 @@ y_cos = np.cos(x)
 
 # Настройки графика
 plt.plot(x, y_sin, label="sin(x)", color="red")
-plt.plot(x, y_cos, label="cos(x)", color="blue")
+plt.plot(x, y_cos, label="cos(x)", color="green")
 
 plt.title("Графики синуса и косинуса")
 plt.xlabel("x")
