@@ -33,14 +33,17 @@ fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(10, 12))
 
 # Первоначальные графики
 line_344, = ax1.plot([], [], 'bo-', label="CAN Data 344")
+text_344 = ax1.text(0.05, 0.9, '', transform=ax1.transAxes, fontsize=12, color='blue')
 ax1.set_title("График для ID 344")
 ax1.legend()
 
 line_164, = ax2.plot([], [], 'ro-', label="CAN Data 164")
+text_164 = ax2.text(0.05, 0.9, '', transform=ax2.transAxes, fontsize=12, color='red')
 ax2.set_title("График для ID 164")
 ax2.legend()
 
 line_200, = ax3.plot([], [], 'go-', label="CAN Data 200")
+text_200 = ax3.text(0.05, 0.9, '', transform=ax3.transAxes, fontsize=12, color='green')
 ax3.set_title("График для ID 200")
 ax3.legend()
 
@@ -63,6 +66,11 @@ def update(frame):
         line_164.set_data(x_data_164, y_data_164)
         line_200.set_data(x_data_200, y_data_200)
 
+        # Обновляем текст текущих значений
+        text_344.set_text(f'Текущее значение: {latest_value_344}')
+        text_164.set_text(f'Текущее значение: {latest_value_164}')
+        text_200.set_text(f'Текущее значение: {latest_value_200}')
+
         # Ограничиваем ось X 10 секундами
         for ax in [ax1, ax2, ax3]:
             ax.set_xlim(max(0, current_time - 10), current_time)
@@ -79,7 +87,7 @@ def update(frame):
                 y_data.pop(0)
 
         update_event.clear()
-    return line_344, line_164, line_200
+    return line_344, line_164, line_200, text_344, text_164, text_200
 
 ani = animation.FuncAnimation(fig, update, interval=100, blit=False)
 
