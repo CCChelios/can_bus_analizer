@@ -25,7 +25,7 @@ if __name__ == "__main__":
             continue 
         if message.arbitration_id == RPM_ID:
             rpm = int.from_bytes(message.data[2:4], byteorder='big')
-        elif message.arbitration_id == DATA_ID and message.data[0] == 0x21:
+        elif message.arbitration_id == DATA_ID and message.data[0] == 0x22:
             ms = int.from_bytes(message.data, byteorder='big')
         print_data()
 

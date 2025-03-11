@@ -87,7 +87,7 @@ def can_listener():
             if message.arbitration_id == 344 and len(message.data) >= 4:
                 latest_value_344 = int.from_bytes(message.data, byteorder='big')
                 update_event.set()
-            elif message.arbitration_id == int('18e', 16):
+            elif message.arbitration_id == 0x18DAF111 and message.data[0] == 0x24:
                 latest_value_164 = int.from_bytes(message.data, byteorder='big')
                 update_event.set()
 
