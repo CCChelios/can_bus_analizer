@@ -7,9 +7,9 @@ import threading
 import can
 import os
 
-# os.system('sudo modprobe vcan')
-# os.system('sudo ip link add dev vcan0 type vcan')
-# os.system('sudo ip link set up vcan0')
+os.system('sudo modprobe vcan')
+os.system('sudo ip link add dev vcan0 type vcan')
+os.system('sudo ip link set up vcan0')
 
 # Настройка CAN-шины
 #can_bus = can.Bus(channel='vcan0', bustype='socketcan')
